@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!--#region commented -->
+
+        <!--#region introduction -->
+        <!-- <p>Using text interpolation: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+        <button @click="seen=!seen">Show/Hide text</button>
+        <p v-if="seen" :style="[baseStyles, overridingStyles]">Now you see me</p>
+        <p v-else>To see hide item click Show/Hide button above</p> -->
+        <!--#endregion -->
+
+        <!--#region v-for  -->
+        <!-- <hr />
+        <li v-for="(item,index) in items">
+            {{ parentMessage }} - {{ index }} - {{ item.message }}
+        </li>
+
+        <ul>
+            <li v-for="value in myObject">
+                {{ value }}
+            </li>
+        </ul>
+
+        <span v-for="n in 10" :style="overridingStyles">{{ n }}
+            <t />
+        </span>
+
+        <ul>
+            <template v-for="item in items">
+                <li>{{ item.message }}</li>
+                <li class="divider" role="presentation"></li>
+            </template>
+        </ul>
+
+        <hr />
+        <li v-for="n in evenNumbers">{{n}}</li>
+
+        <ul v-for="numbers in sets">
+            <li v-for="n in even(numbers)">{{n}}</li>
+        </ul> -->
+
+        <!--#endregion -->
+
+        <!--#region Event Handling  -->
+        <!-- <button @click="count++">Counter: {{ count }}</button>
+        <br/> -->
+        <!-- `greet` is the name of the method defined above -->
+        <!-- <button @click="greet">Greet</button>
+        <br/> -->
+        <!-- using $event special variable -->
+        <!-- <button @click="warn('Form cannot be submitted yet.', $event)">
+            Submit
+        </button>
+        <br/> -->
+        <!-- using inline arrow function -->
+        <!-- <button @click="(event) => warn('Form cannot be submitted yet.', event)">
+            Submit
+        </button>
+        <br/>
+        <br/> -->
+        <!--#endregion -->
+
+        <!--#region Form Input Bindings  -->
+        <!-- <input :value="name" @input="event => name = event.target.value">
+        <br/>
+        
+        <input v-model="text">
+        <br/>
+       
+        <p>{{text}}</p>
+
+        <p>Message is: {{ message }}</p>
+        <input v-model="message" placeholder="edit me" />
+        <br/>
+        <span>Multiline message is:</span>
+        <p style="white-space: pre-line;">{{ message }}</p>
+        <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        <br/>
+        <input type="checkbox" id="checkbox" v-model="checked" />
+        <label for="checkbox">{{ checked }}</label>
+
+        <br/><br/><br/><br/>
+
+        <div>Checked names: {{ checkedNames }}</div>
+
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+
+        <br/><br/>
+        <div>Selected: {{ selected }}</div>
+
+        <select v-model="selected">
+        <option disabled value="">Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        </select>
+
+        <br/><br/>
+        <div>Selected: {{ selected }}</div>
+
+        <select v-model="selected" multiple>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        </select>
+
+        <br/><br/>
+
+        <select v-model="selected">
+            <option v-for="option in options" :value="option.value">
+              {{ option.text }}
+            </option>
+          </select>
+          
+          <div>Selected: {{ selected }}</div>
+
+          <br/><br/> -->
+
+        <!-- `picked` is a string "a" when checked -->
+        <!-- <input type="radio" v-model="picked" value="a" /> -->
+
+        <!-- `toggle` is either true or false -->
+        <!-- <input type="checkbox" v-model="toggle" /> -->
+
+        <!-- `selected` is a string "abc" when the first option is selected -->
+        <!-- <select v-model="selected">
+        <option value="abc">ABC</option>
+        </select> -->
+
+        <!-- <input type="radio" v-model="pick" :value="first" /> -->
+        <!-- <input type="radio" v-model="pick" :value="second" /> -->
+
+        <!-- <select v-model="selected"> -->
+        <!-- inline object literal -->
+        <!-- <option :value="{ number: 123 }">123</option> -->
+        <!-- </select> -->
+        <!--#endregion -->
+
+        <!--#region Lifecycle Hooks -->
+        <!-- <p>
+            Ask a yes/no question:
+            <input v-model="question" />
+        </p>
+        <p>{{ answer }}</p>
+        
+        <input ref="input"> -->
+        <!--#endregion -->
+        <!--#endregion -->
+        <!--#region Component -->
+        <!-- <button @click="count++">You clicked me {{ count }} times.</button> -->
+
+        <h1>Here are many child components!</h1>
+        <button-counter></button-counter>
+
+        <div :style="{ fontSize: postFontSize + 'em' }">
+            <blog-post v-for="post in posts" :key="post.id" :title="post.title" @enlarge-text="postFontSize += 0.1">
+            </blog-post>
+        </div>
+
+        <br />
+
+        <alert-box>
+            we use the <strong>slot</strong> as a placeholder where we want the content to go
+        </alert-box>
+
+        <br />
+        <br />
+
+        <div class="demo">
+            <button v-for="tab in tabs" :key="tab" :class="['tab-button', { active: currentTab === tab }]"
+                @click="currentTab = tab">
+                {{ tab }}
+            </button>
+            <component :is="currentTab" class="tab"></component>
+        </div>
+
+        <br />
+        <br />
+
+        <form id="search">
+            Search <input name="query" v-model="searchQuery">
+        </form>
+        <grid :data="gridData" :columns="gridColumns" :filter-key="searchQuery"></grid>
+        <!--#endregion -->
+    </div>
+
+    <style scoped>
+        .alert-box {
+            color: rgb(97, 97, 97);
+            border: 1px solid red;
+            border-radius: 4px;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+
+        strong {
+            color: red;
+        }
+
+        .demo {
+            font-family: sans-serif;
+            border: 1px solid #eee;
+            border-radius: 2px;
+            padding: 20px 30px;
+            margin-top: 1em;
+            margin-bottom: 40px;
+            user-select: none;
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            padding: 6px 10px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background: #f0f0f0;
+            margin-bottom: -1px;
+            margin-right: -1px;
+        }
+
+        .tab-button:hover {
+            background: #e0e0e0;
+        }
+
+        .tab-button.active {
+            background: #e0e0e0;
+        }
+
+        .tab {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script type="module">
+        import ButtonCounter from './ButtonCounter.js'
+        import BlogPost from './BlogPost.js'
+        import AlertBox from './AlertBox.js'
+        import Home from './Home.js'
+        import Posts from './Posts.js'
+        import Archive from './Archive.js'
+        import Grid from './Grid.js'
+
+        Vue.createApp({
+            components: {
+                ButtonCounter,
+                BlogPost,
+                AlertBox,
+                Home,
+                Posts,
+                Archive,
+                Grid
+            },
+            data() {
+                return {
+                    count: 0,
+                    rawHtml: '<span style="color: red">This should be red.</span>',
+                    seen: false,
+                    baseStyles: {
+                        color: 'red',
+                        fontSize: '13px'
+                    },
+                    overridingStyles: {
+                        backgroundColor: 'green'
+                    },
+                    parentMessage: 'Parent',
+                    items: [{ message: 'Foo' }, { message: 'Bar' }],
+                    myObject: {
+                        title: 'How to do lists in Vue',
+                        author: 'Jane Doe',
+                        publishedAt: '2016-04-10'
+                    },
+                    numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                    sets: [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]],
+                    name: 'Vue.js',
+                    text: '',
+                    message: '',
+                    checked: false,
+                    checkedNames: [],
+                    selected: '',
+                    options: [
+                        { text: 'One', value: 'A' },
+                        { text: 'Two', value: 'B' },
+                        { text: 'Three', value: 'C' }
+                    ],
+                    pick: 'first',
+                    question: '',
+                    answer: 'Questions usually contain a question mark. ;-)',
+                    posts: [
+                        { id: 1, title: 'My journey with Vue' },
+                        { id: 2, title: 'Blogging with Vue' },
+                        { id: 3, title: 'Why Vue is so fun' }
+                    ],
+                    postFontSize: 1,
+                    currentTab: 'Home',
+                    tabs: ['Home', 'Posts', 'Archive'],
+                    searchQuery: '',
+                    gridColumns: ['name', 'power'],
+                    gridData: [
+                        { name: 'Bruce Lee', power: 9000 },
+                        { name: 'Jackie Chan', power: 7000 },
+                        { name: 'Jet Li', power: 8000 }
+                    ]
+                }
+            },
+            watch: {
+                // whenever question changes, this function will run
+                question(newQuestion, oldQuestion) {
+                    if (newQuestion.indexOf('?') > -1) {
+                        this.getAnswer()
+                    }
+                }
+            },
+            methods: {
+                async getAnswer() {
+                    this.answer = 'Thinking...'
+                    try {
+                        const res = await fetch('https://yesno.wtf/api')
+                        this.answer = (await res.json()).answer
+                    }
+                    catch (error) {
+                        this.answer = 'Error! Could not reach the API. ' + error
+                    }
+                },
+                HideSeen() {
+                    this.seen = !this.seen
+                },
+                even(numbers) {
+                    return numbers.filter(number => number % 2 === 0)
+                },
+                greet(event) {
+                    // `this` inside methods points to the current active instance
+                    alert(`Hello ${this.name}!`)
+                    // `event` is the native DOM event
+                    if (event) {
+                        alert(event.target.tagName)
+                    }
+                },
+                warn(message, event) {
+                    // now we have access to the native event
+                    if (event) {
+                        event.preventDefault()
+                    }
+                    alert(message)
+                },
+            },
+            computed: {
+                evenNumbers() {
+                    return this.numbers.filter(n => n % 2 == 0)
+                }
+            },
+            mounted() {
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>
